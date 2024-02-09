@@ -1,0 +1,251 @@
+//httpapi.host
+{
+  "App": {
+    "CorsOrigins": "https://*.CrossChainServer.com,http://localhost:4200"
+  },
+  // 跨链桥服务mysql
+  "ConnectionStrings": {
+    "Default": "Server=127.0.0.1;Port=3306;Database=CrossChainServer;Uid=root;Pwd=root123456;"
+  },
+  "Redis": {
+    "Configuration": "127.0.0.1"
+  },
+  "AuthServer": {
+    "Authority": "https://localhost:44316",
+    "RequireHttpsMetadata": "true",
+    "SwaggerClientId": "CrossChainServer_Swagger",
+    "SwaggerClientSecret": "1q2w3e*"
+  },
+  "Kestrel": {
+    "EndPoints": {
+      "Http": {
+        "Url": "http://*:7030/"
+      }
+    }
+  },
+  "StringEncryption": {
+    "DefaultPassPhrase": "Or7FKveUF7w9PuVs"
+  },
+  "RabbitMQ": {
+    "Connections": {
+      "Default": {
+        "HostName": "127.0.0.1",
+        "Port": "5672",
+        "UserName": "admin",
+        "Password": "admin123456"
+      }
+    },
+    "EventBus": {
+      "ClientName": "eBridgeServer-Api",
+      "ExchangeName": "eBridgeServer"
+    }
+  },
+  // Elasicseach uris
+  "ElasticUris": {
+    "Uris": [
+      "http://127.0.0.1:9200"
+    ]
+  },
+  "IndexSetting": {
+    "NumberOfShards": 5,
+    "NumberOfReplicas": 1,
+    "IndexPrefix": "eBridgeServer"
+  },
+  "TokenPrice": {
+    "CoinIdMapping": {
+      "ELF": "aelf",
+      "AEUSD":"tether",
+      "ETH": "ethereum",
+      "BNB": "binancecoin",
+      "BTC": "bitcoin"
+    }
+  },
+  "ChainApi": {
+    "ChainNodeApis": {
+      "MainChain_AELF": "http://192.168.66.3:8000/",
+      "SideChain_tDVV": "http://192.168.66.241:8000",
+      "Sepolia": "https://sepolia.infura.io/v3/18a82a01eb0349d4bd50589dacaefd88",
+      "BSCTest": "https://data-seed-prebsc-1-s1.bnbchain.org:8545",
+      "Nile": "https://api.nileex.io/"
+    },
+    "ApiKeys": {
+      "Nile": "a523b9d2-101f-4f8a-97b9-776bf039478c"
+    }
+  },
+  "BridgeContract": {
+    "ContractAddresses": {
+      "Sepolia": {
+        "BridgeInContract": "0x6BD06F033B5d1Bc9453B88b1cE6c63A907e7C13a",
+        "BridgeOutContract": "0xc4749636D827107b2df539852648e6E9f19F4520",
+        "LimiterContract": "0x88D3df6d482046c8c538B9c9B7f7342e83811b83"
+      },
+      "BSCTest": {
+        "BridgeInContract": "0x802a044dAe0E8a49cb4a255D0dC5C677c35106B7",
+        "BridgeOutContract": "0x26965A367751411BcDC852D0f2004858f873A65F",
+        "LimiterContract": "0xEC5fB890A1f7Db902E7226c82c5B85696e53991f"
+      },
+      "MainChain_AELF": {
+        "BridgeInContract": "2dKF3svqDXrYtA5mYwKfADiHajo37mLZHPHVVuGbEDoD9jSgE8",
+        "BridgeOutContract": "2dKF3svqDXrYtA5mYwKfADiHajo37mLZHPHVVuGbEDoD9jSgE8"
+      },
+      "SideChain_tDVV": {
+        "BridgeInContract": "bXRnskXaJUPcz4uVmX29Fht87tQbGst7uixFGC7SniwVm7Uf9",
+        "BridgeOutContract": "bXRnskXaJUPcz4uVmX29Fht87tQbGst7uixFGC7SniwVm7Uf9"
+      },
+      "Nile": {
+        "BridgeInContract": "TAyJxS7ATKCp9iVzms1wPGg3iXV9p51SGe",
+        "BridgeOutContract": "TQGdZkonWomNTxPskkUX3f19kB5W3yJeuS",
+        "LimiterContract": "TEAr3Cg1YXX1GaXFcbzsVWtXnjsZZ4yX9m"
+      }
+    }
+  },
+  "Account": {
+    "PrivateKeys": {
+      "MainChain_AELF": "a4cd9a69455529f88af25ad8bc5145e4b986493a7efb821e3d5cfdf90f191594",
+      "SideChain_tDVV": "a4cd9a69455529f88af25ad8bc5145e4b986493a7efb821e3d5cfdf90f191594"
+    }
+  },
+  // 跨链桥扫链服务地址
+  //"GraphQL": {
+  //  "Configuration": "http://127.0.0.1:7020/{clientId}/CrossChainServerIndexerSchema/graphql"
+  //}
+
+  //新增配置
+  "GraphQLClients": {
+    "Mapping": {
+      "CrossChainServerClient": "http://192.168.67.233:7020/AElfIndexer_CrossChain/CrossChainServerIndexerSchema/graphql",
+      "CrossChainClient": "http://192.168.67.233:7022/AElfIndexer_eBridge/EbridgeIndexerPluginSchema/graphql"
+    }
+  },
+  "CrossChainLimits": {
+    "ChainIdInfo": {
+      "TokenFirstChainId":"Sepolia",
+      "ToChainIds":["AELF","tDVW"]
+    },
+    "ChainSortRules":{
+      "Sepolia-AELF": 1,
+      "Sepolia-tDVW": 2,
+      "AELF-Sepolia": 3,
+      "tDVW-Sepolia": 4,
+      "BSCTest-AELF": 5,
+      "BSCTest-tDVV": 6,
+      "AELF-BSCTest": 7,
+      "tDVV-BSCTest": 8,
+      "Nile-AELF": 9,
+      "Nile-tDVV": 10,
+      "AELF-Nile": 11,
+      "tDVV-Nile": 12
+    },
+    "TokenSortRules":{
+      "ELF": 1,
+      "USDT": 2,
+      "USDC": 3,
+      "DAI": 4,
+      "ETH": 5,
+      "BNB": 6
+    }
+  },
+  "EvmTokens": {
+    "Tokens": {
+      // fromChain id
+      "Sepolia": [
+        {
+          "Address": "0x8adD57b8aD6C291BC3E3ffF89F767fcA08e0E7Ab",
+          "TargetChainId": "MainChain_AELF"
+        },
+        {
+          "Address": "0x8adD57b8aD6C291BC3E3ffF89F767fcA08e0E7Ab",
+          "TargetChainId": "SideChain_tDVV"
+        },
+        {
+          "Address": "0x60eeCc4d19f65B9EaDe628F2711C543eD1cE6679",
+          "TargetChainId": "MainChain_AELF"
+        },
+        {
+          "Address": "0x60eeCc4d19f65B9EaDe628F2711C543eD1cE6679",
+          "TargetChainId": "SideChain_tDVV"
+        },
+        {
+          "Address": "0x035900292c309d8beCBCAFb3227238bec0EBa253",
+          "TargetChainId": "MainChain_AELF"
+        },
+        {
+          "Address": "0x035900292c309d8beCBCAFb3227238bec0EBa253",
+          "TargetChainId": "SideChain_tDVV"
+        }
+      ],
+      "BSCTest": [
+        {
+          "Address": "0xd1CD51a8d28ab58464839ba840E16950A6a635ad",
+          "TargetChainId": "MainChain_AELF"
+        },
+        {
+          "Address": "0xd1CD51a8d28ab58464839ba840E16950A6a635ad",
+          "TargetChainId": "SideChain_tDVV"
+        },
+        {
+          "Address": "0x3F280eE5876CE8B15081947E0f189E336bb740A5",
+          "TargetChainId": "MainChain_AELF"
+        },
+        {
+          "Address": "0x3F280eE5876CE8B15081947E0f189E336bb740A5",
+          "TargetChainId": "SideChain_tDVV"
+        },
+        {
+          "Address": "0x0CBAb7E71f969Bfb3eF5b13542E9087a73244F02",
+          "TargetChainId": "MainChain_AELF"
+        },
+        {
+          "Address": "0x0CBAb7E71f969Bfb3eF5b13542E9087a73244F02",
+          "TargetChainId": "SideChain_tDVV"
+        }
+      ],
+      "Nile": [
+        {
+          "Address": "TC9D6ghWXUcGPdhvJZPMVvmST5WkX6Rock",
+          "TargetChainId": "MainChain_AELF"
+        },
+        {
+          "Address": "TC9D6ghWXUcGPdhvJZPMVvmST5WkX6Rock",
+          "TargetChainId": "SideChain_tDVV"
+        }
+      ]
+    }
+  },
+  "TokenSymbolMapping": {
+    "Mapping": {
+      "Sepolia": {
+        "MainChain_AELF": {
+          "WETH": "ETH",
+          "ELF": "ELF",
+          "USDT": "USDT"
+        },
+        "SideChain_tDVV": {
+          "WETH": "ETH",
+          "ELF": "ELF",
+          "USDT": "USDT"
+        }
+      },
+      "BSCTest": {
+        "MainChain_AELF": {
+          "WBNB": "BNB",
+          "ELF": "ELF",
+          "USDT": "USDT"
+        },
+        "SideChain_tDVV": {
+          "WBNB": "BNB",
+          "ELF": "ELF",
+          "USDT": "USDT"
+        }
+      },
+      "Nile": {
+        "MainChain_AELF": {
+          "USDT": "USDT"
+        },
+        "SideChain_tDVV": {
+          "USDT": "USDT"
+        }
+      }
+    }
+  }
+}

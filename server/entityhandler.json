@@ -1,0 +1,339 @@
+//entityhandler
+{
+  // 跨链桥服务mysql
+  "ConnectionStrings": {
+      "Default": "Server=127.0.0.1;Port=3306;Database=CrossChainServer;Uid=root;Pwd=root123456;"
+  },
+  "Redis": {
+      "Configuration": "127.0.0.1"
+  },
+  "StringEncryption": {
+      "DefaultPassPhrase": "RDjeywn1asnmJgNm"
+  },
+  "RabbitMQ": {
+      "Connections": {
+          "Default": {
+              "HostName": "127.0.0.1",
+              "Port": "5672",
+              "UserName": "admin",
+              "Password": "admin123456"
+          }
+      },
+      "EventBus": {
+          "ClientName": "eBridgeServer-EntityHandler",
+          "ExchangeName": "eBridgeServer"
+      }
+  },
+  // Elasicseach uris
+  "ElasticUris": {
+      "Uris": [
+          "http://127.0.0.1:9200"
+      ]
+  },
+  "IndexSetting": {
+      "NumberOfShards": 5,
+      "NumberOfReplicas": 1,
+      "IndexPrefix": "eBridgeServer"
+  },
+  "ChainApi": {
+      "ChainNodeApis": {
+          "MainChain_AELF": "http://192.168.66.3:8000/",
+          "SideChain_tDVV": "http://192.168.66.241:8000",
+          "Sepolia": "https://sepolia.infura.io/v3/18a82a01eb0349d4bd50589dacaefd88",
+          "BSCTest": "https://data-seed-prebsc-1-s1.bnbchain.org:8545",
+          "Nile": "https://api.nileex.io/"
+      },
+      "ApiKeys": {
+          "Nile": "a523b9d2-101f-4f8a-97b9-776bf039478c"
+      }
+  },
+  "TokenPrice": {
+      "CoinIdMapping": {
+          "ELF": "aelf",
+          "AEUSD": "tether",
+          "ETH": "ethereum",
+          "BNB": "binancecoin",
+          "BTC": "bitcoin"
+      }
+  },
+  // 各个链合约地址
+  "BridgeContract": {
+      "ContractAddresses": {
+          "Sepolia": {
+              "BridgeInContract": "0x6BD06F033B5d1Bc9453B88b1cE6c63A907e7C13a",
+              "BridgeOutContract": "0xc4749636D827107b2df539852648e6E9f19F4520"
+          },
+          "BSCTest": {
+              "BridgeInContract": "0x802a044dAe0E8a49cb4a255D0dC5C677c35106B7",
+              "BridgeOutContract": "0x26965A367751411BcDC852D0f2004858f873A65F"
+          },
+          "MainChain_AELF": {
+              "BridgeInContract": "iupiTuL2cshxB9UNauXNXe9iyCcqka7jCotodcEHGpNXeLzqG",
+              "BridgeOutContract": "iupiTuL2cshxB9UNauXNXe9iyCcqka7jCotodcEHGpNXeLzqG"
+          },
+          "SideChain_tDVW": {
+              "BridgeInContract": "EU79trbPddWVRzZHUCXWNJBU7rr5VVWRGLjUcDxQPgWXRtbYp",
+              "BridgeOutContract": "EU79trbPddWVRzZHUCXWNJBU7rr5VVWRGLjUcDxQPgWXRtbYp"
+          },
+          "Nile": {
+              "BridgeInContract": "TAyJxS7ATKCp9iVzms1wPGg3iXV9p51SGe",
+              "BridgeOutContract": "TQGdZkonWomNTxPskkUX3f19kB5W3yJeuS"
+          }
+      }
+  },
+  "ReportContract": {
+      "ContractAddresses": {
+          "MainChain_AELF": "2RvZEzZTrj5BXEuMtHmfVDn2fLwKdBYD7CT5LxBCccqwGN7akY",
+          "SideChain_tDVV": "EhoPemr3rb2nz2X365F58pWk8tybw6vALdd8zwjdhzKYMfyKr"
+      }
+  },
+  "CrossChainContract": {
+      "ContractAddresses": {
+          "MainChain_AELF": "2SQ9LeGZYSWmfJcYuQkDQxgd3HzwjamAaaL4Tge2eFSXw2cseq",
+          "SideChain_tDVV": "2snHc8AMh9QMbCAa7XXmdZZVM5EBZUUPDdLjemwUJkBnL6k8z9"
+      }
+  },
+  "TokenContract": {
+      "ContractAddresses": {
+          "MainChain_AELF": "JRmBduh4nXWi1aXgdUsj5gJrzeZb2LxmrAbf7W99faZSvoAaE",
+          "SideChain_tDVV": "7RzVGiuVWkvL4VfVHdZfQF2Tri3sgLe9U991bohHFfSRZXuGX"
+      }
+  },
+  "Account": {
+      "PrivateKeys": {
+          "MainChain_AELF": "a4cd9a69455529f88af25ad8bc5145e4b986493a7efb821e3d5cfdf90f191594",
+          "SideChain_tDVV": "a4cd9a69455529f88af25ad8bc5145e4b986493a7efb821e3d5cfdf90f191594"
+      }
+  },
+  // Evm合约数据同步配置
+  "BridgeContractSync": {
+      "Tokens": {
+          "Sepolia": {
+              // 跨入Token列表
+              "0": [
+                  {
+                      "Address": "0x8adD57b8aD6C291BC3E3ffF89F767fcA08e0E7Ab",
+                      "Symbol": "ELF",
+                      "TargetChainId": "MainChain_AELF"
+                  },
+                  {
+                      "Address": "0x8adD57b8aD6C291BC3E3ffF89F767fcA08e0E7Ab",
+                      "Symbol": "ELF",
+                      "TargetChainId": "SideChain_tDVW"
+                  },
+                  {
+                      "Address": "0x60eeCc4d19f65B9EaDe628F2711C543eD1cE6679",
+                      "Symbol": "USDT",
+                      "TargetChainId": "MainChain_AELF"
+                  },
+                  {
+                      "Address": "0x60eeCc4d19f65B9EaDe628F2711C543eD1cE6679",
+                      "Symbol": "USDT",
+                      "TargetChainId": "SideChain_tDVV"
+                  },
+                  {
+                      "Address": "0x035900292c309d8beCBCAFb3227238bec0EBa253",
+                      "Symbol": "WETH",
+                      "TargetChainId": "MainChain_AELF"
+                  },
+                  {
+                      "Address": "0x035900292c309d8beCBCAFb3227238bec0EBa253",
+                      "Symbol": "WETH",
+                      "TargetChainId": "SideChain_tDVV"
+                  }
+              ],
+              // 跨出Token列表
+              "1": [
+                  {
+                      "Address": "0x8adD57b8aD6C291BC3E3ffF89F767fcA08e0E7Ab",
+                      "Symbol": "ELF",
+                      "TargetChainId": "MainChain_AELF"
+                  },
+                  {
+                      "Address": "0x8adD57b8aD6C291BC3E3ffF89F767fcA08e0E7Ab",
+                      "Symbol": "ELF",
+                      "TargetChainId": "SideChain_tDVW"
+                  },
+                  {
+                      "Address": "0x60eeCc4d19f65B9EaDe628F2711C543eD1cE6679",
+                      "Symbol": "USDT",
+                      "TargetChainId": "MainChain_AELF"
+                  },
+                  {
+                      "Address": "0x60eeCc4d19f65B9EaDe628F2711C543eD1cE6679",
+                      "Symbol": "USDT",
+                      "TargetChainId": "SideChain_tDVV"
+                  },
+                  {
+                      "Address": "0x035900292c309d8beCBCAFb3227238bec0EBa253",
+                      "Symbol": "WETH",
+                      "TargetChainId": "MainChain_AELF"
+                  },
+                  {
+                      "Address": "0x035900292c309d8beCBCAFb3227238bec0EBa253",
+                      "Symbol": "WETH",
+                      "TargetChainId": "SideChain_tDVV"
+                  }
+              ]
+          },
+          "BSCTest": {
+              "0": [
+                  {
+                      "Address": "0xd1CD51a8d28ab58464839ba840E16950A6a635ad",
+                      "Symbol": "ELF",
+                      "TargetChainId": "MainChain_AELF"
+                  },
+                  {
+                      "Address": "0xd1CD51a8d28ab58464839ba840E16950A6a635ad",
+                      "Symbol": "ELF",
+                      "TargetChainId": "SideChain_tDVV"
+                  },
+                  {
+                      "Address": "0x3F280eE5876CE8B15081947E0f189E336bb740A5",
+                      "Symbol": "USDT",
+                      "TargetChainId": "MainChain_AELF"
+                  },
+                  {
+                      "Address": "0x3F280eE5876CE8B15081947E0f189E336bb740A5",
+                      "Symbol": "USDT",
+                      "TargetChainId": "SideChain_tDVV"
+                  },
+                  {
+                      "Address": "0x0CBAb7E71f969Bfb3eF5b13542E9087a73244F02",
+                      "Symbol": "WBNB",
+                      "TargetChainId": "MainChain_AELF"
+                  },
+                  {
+                      "Address": "0x0CBAb7E71f969Bfb3eF5b13542E9087a73244F02",
+                      "Symbol": "WBNB",
+                      "TargetChainId": "SideChain_tDVV"
+                  }
+              ],
+              "1": [
+                  {
+                      "Address": "0xd1CD51a8d28ab58464839ba840E16950A6a635ad",
+                      "Symbol": "ELF",
+                      "TargetChainId": "MainChain_AELF"
+                  },
+                  {
+                      "Address": "0xd1CD51a8d28ab58464839ba840E16950A6a635ad",
+                      "Symbol": "ELF",
+                      "TargetChainId": "SideChain_tDVV"
+                  },
+                  {
+                      "Address": "0x3F280eE5876CE8B15081947E0f189E336bb740A5",
+                      "Symbol": "USDT",
+                      "TargetChainId": "MainChain_AELF"
+                  },
+                  {
+                      "Address": "0x3F280eE5876CE8B15081947E0f189E336bb740A5",
+                      "Symbol": "USDT",
+                      "TargetChainId": "SideChain_tDVV"
+                  },
+                  {
+                      "Address": "0x0CBAb7E71f969Bfb3eF5b13542E9087a73244F02",
+                      "Symbol": "WBNB",
+                      "TargetChainId": "MainChain_AELF"
+                  },
+                  {
+                      "Address": "0x0CBAb7E71f969Bfb3eF5b13542E9087a73244F02",
+                      "Symbol": "WBNB",
+                      "TargetChainId": "SideChain_tDVV"
+                  }
+              ]
+          },
+          "Nile": {
+              // 跨入Token列表
+              "0": [
+                  {
+                      "Address": "TC9D6ghWXUcGPdhvJZPMVvmST5WkX6Rock",
+                      "Symbol": "USDT",
+                      "TargetChainId": "MainChain_AELF"
+                  },
+                  {
+                      "Address": "TC9D6ghWXUcGPdhvJZPMVvmST5WkX6Rock",
+                      "Symbol": "USDT",
+                      "TargetChainId": "SideChain_tDVV"
+                  }
+              ],
+              // 跨出Token列表
+              "1": [
+                  {
+                      "Address": "TC9D6ghWXUcGPdhvJZPMVvmST5WkX6Rock",
+                      "Symbol": "USDT",
+                      "TargetChainId": "MainChain_AELF"
+                  },
+                  {
+                      "Address": "TC9D6ghWXUcGPdhvJZPMVvmST5WkX6Rock",
+                      "Symbol": "USDT",
+                      "TargetChainId": "SideChain_tDVV"
+                  }
+              ]
+          }
+      }
+  },
+  // Evm链确认区块数量
+  "BlockConfirmation": {
+      "ConfirmationCount": {
+          "Sepolia": 12,
+          "BSCTest": 30,
+          "Nile": 12
+      }
+  },
+  // 不同链的Symbol映射关系
+  "TokenSymbolMapping": {
+      "Mapping": {
+          "Sepolia": {
+              "MainChain_AELF": {
+                  "WETH": "ETH",
+                  "ELF": "ELF",
+                  "USDT": "USDT"
+              },
+              "SideChain_tDVV": {
+                  "WETH": "ETH",
+                  "ELF": "ELF",
+                  "USDT": "USDT"
+              }
+          },
+          "BSCTest": {
+              "MainChain_AELF": {
+                  "WBNB": "BNB",
+                  "ELF": "ELF",
+                  "USDT": "USDT"
+              },
+              "SideChain_tDVV": {
+                  "WBNB": "BNB",
+                  "ELF": "ELF",
+                  "USDT": "USDT"
+              }
+          },
+          "Nile": {
+              "MainChain_AELF": {
+                  "USDT": "USDT"
+              },
+              "SideChain_tDVV": {
+                  "USDT": "USDT"
+              }
+          }
+      }
+  },
+  "Serilog": {
+      "WriteTo": [
+          {
+              "Name": "RollingFile",
+              "Args": {
+                  "pathFormat": "Logs/log-{Date}.log",
+                  "retainedFileCountLimit": 2
+              }
+          }
+      ]
+  },
+  // TODO
+  //新增配置
+  "GraphQLClients": {
+      "Mapping": {
+          "CrossChainServerClient": "http://192.168.67.233:7020/AElfIndexer_CrossChain/CrossChainServerIndexerSchema/graphql",
+          "CrossChainClient": "http://192.168.67.233:7022/AElfIndexer_eBridge/EbridgeIndexerPluginSchema/graphql"
+      }
+  }
+}

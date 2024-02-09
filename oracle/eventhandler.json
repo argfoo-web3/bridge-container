@@ -1,0 +1,440 @@
+{
+  "Logging": {
+    "LogLevel": {
+      "Default": "Information",
+      "Microsoft": "Warning",
+      "Microsoft.Hosting.Lifetime": "Information"
+    }
+  },
+  "Redis": {
+      "Configuration": "127.0.0.1,defaultDatabase=1"
+  },
+  "MessageQueue": {
+    "Enable": true,
+    "HostName": "127.0.0.1",
+    "Uri": "amqp://127.0.0.1:5672",
+    "Port": "5672",
+    "ClientName": "Oracle-Client-Test-01",
+    "ExchangeName": "Oracle-Test-01",
+    "UserName": "admin",
+    "Password": "admin123456"
+  },
+  "AElfClient": {
+    "ClientConfigList": [
+      {
+        "Alias": "AELF",
+        "Endpoint": "http://192.168.66.3:8000",
+        "UserName": "",
+        "Password": "",
+        "Timeout": 100
+      },
+      {
+        "Alias": "tDVV",
+        "Endpoint": "http://192.168.66.241:8000",
+        "UserName": "",
+        "Password": "",
+        "Timeout": 100
+      }
+    ]
+  },
+  "AElfAccount": {
+    "KeyDirectory": "",
+    "AccountConfigList": [
+      {
+        "Alias": "aelf",
+        "PrivateKey": "a4cd9a69455529f88af25ad8bc5145e4b986493a7efb821e3d5cfdf90f191594"
+      }
+    ]
+  },
+  "AElfClientConfig": {
+    "ClientAlias": "AELF",
+    "MainChainClientAlias": "TestNetMainChain",
+    "SideChainClientAlias": "TestNetSideChain2",
+    "AccountAlias": "aelf"
+  },
+  "AElfChainAlias": {
+    "Mapping": {
+      "MainChain_AELF": "AELF",
+      "SideChain_tDVV": "tDVV"
+    }
+  },
+  "EthereumClient": {
+    "ClientConfigList": [
+      {
+        "Alias": "BSCTest",
+        "Url": "https://data-seed-prebsc-1-s1.bnbchain.org:8545"
+      },
+      {
+        "Alias": "Sepolia",
+        "Url": "https://ethereum-sepolia.publicnode.com"
+      }
+    ]
+  },
+  "TronClient": {
+    "ClientConfigList": [
+      {
+        "Alias": "Nile",
+        "Url": "https://api.nileex.io/",
+        "ApiKey": "a523b9d2-101f-4f8a-97b9-776bf039478c"
+      }
+    ]
+  },
+  "EthereumAccount": {
+    "KeyDirectory": "",
+    "AccountConfigList": [
+      {
+        "Alias": "eth",
+        "PrivateKey": "a4cd9a69455529f88af25ad8bc5145e4b986493a7efb821e3d5cfdf90f191594"
+      }
+    ]
+  },
+  "TronAccount": {
+    "KeyDirectory": "",
+    "AccountConfig":
+    {
+      "Alias": "tron",
+      "PrivateKey": "a4cd9a69455529f88af25ad8bc5145e4b986493a7efb821e3d5cfdf90f191594"
+    }
+  },
+  "EthereumClientConfig": {
+    "AccountAlias": "eth"
+  },
+  "EthereumChainAlias": {
+    "Mapping": {
+      "Ethereum": "Ethereum",
+      "Sepolia":"Sepolia",
+      "BSCTest": "BSCTest"
+    }
+  },
+  "TronChainAlias": {
+    "Mapping": {
+      "Nile": "Nile"
+    }
+  },
+  "AElfContract": {
+    "ContractDirectory": "", 
+    "ContractAddressList": {
+      "MainChain_AELF": {
+        "MerkleTreeContract": "AtCnocGN47ZCUscwHYxJNh8G8jVmbgjgy1MR62uoXGohd67wu",
+        "BridgeContract": "iupiTuL2cshxB9UNauXNXe9iyCcqka7jCotodcEHGpNXeLzqG",
+        "OracleContract": "2TXvtjgTiMwjvEyWGEvfbeQ9P6zVK55pTPcmzvLFBDCMLNUYXV",
+        "ReportContract": "2RvZEzZTrj5BXEuMtHmfVDn2fLwKdBYD7CT5LxBCccqwGN7akY",
+        "StringAggregatorContract": "GVqTvLDwiDfoWEtq3VeB9g4jMfbP4KbXRyqit4Z1LKsbZrwrV",
+        "RegimentContract": "2sFCkQs61YKVkHpN3AT7887CLfMvzzXnMkNYYM431RK5tbKQS9",
+        "ConsensusContract": "pGa4e5hNGsgkfjEGm72TEvbF7aRDqKBd4LuXtab4ucMbXLcgJ"
+      },
+      "SideChain_tDVV": {
+        "MerkleTreeContract": "Gymahy9KnP9ntvQX8F9XKVgnCiQVPoaQWxp7yrYtHisY2JMqN",
+        "BridgeContract": "EU79trbPddWVRzZHUCXWNJBU7rr5VVWRGLjUcDxQPgWXRtbYp",
+        "OracleContract": "SBrGAmBong8tmou3EKHgKkUoqpvEUrPNuBtpF9yc3QA1r9SKL",
+        "ReportContract": "EhoPemr3rb2nz2X365F58pWk8tybw6vALdd8zwjdhzKYMfyKr",
+        "StringAggregatorContract": "25TyYPmWgQVSjAG3FnTn1quWCbKgvbFpBxTPnoDkK2xSUtNBey",
+        "RegimentContract": "XmQ59e3JxmtP5gGafNFyJQAF5A2WbtVDYXFVv3JEaKMckyb3b",
+        "ConsensusContract": "BNPFPPwQ3DE9rwxzdY61Q2utU9FZx9KYUnrYHQqCR6N4LLhUE"
+      }
+    }
+  },
+  "EthereumContract": {
+    "AbiFileDirectory":"/app/ContractBuild",
+    "ContractInfoList": {
+      "BridgeIn": {
+        "AbiFileName": "BridgeInImplementationAbi.json"
+      },
+      "BridgeOut": {
+        "AbiFileName": "BridgeOutImplementationV1Abi.json"
+      }
+    }
+  },
+  "Oracle": {
+    "ObserverAssociationAddressList": ["2sFCkQs61YKVkHpN3AT7887CLfMvzzXnMkNYYM431RK5tbKQS9","XmQ59e3JxmtP5gGafNFyJQAF5A2WbtVDYXFVv3JEaKMckyb3b"]
+  },
+  "Bridge": {
+    "IsSendQuery": true,
+    "IsTransmitter": true,
+    "QueryPayment": 0,
+    "AccountAddress":"2QCkhDkn2ZGv7a3W1K9GAYpqaqFGaQwnkEoguCHvTv6fKC3nyg",
+    "BridgesIn": [
+      {
+        "chainId": "Sepolia",
+        "TargetChainId": "MainChain_AELF",
+        "OriginToken": "0x8adD57b8aD6C291BC3E3ffF89F767fcA08e0E7Ab",
+        "EthereumBridgeInContractAddress": "0x6BD06F033B5d1Bc9453B88b1cE6c63A907e7C13a",
+        "SwapId": "c9b95359a98a5da3291c24e74c0f59a94535ba4575fe7c2f8584a948ebbf39f4",
+        "MaximumLeafCount": 8,
+        "QueryToAddress": "2sFCkQs61YKVkHpN3AT7887CLfMvzzXnMkNYYM431RK5tbKQS9"
+      },
+      {
+        "chainId": "Sepolia",
+        "TargetChainId": "MainChain_AELF",
+        "OriginToken": "0x60eeCc4d19f65B9EaDe628F2711C543eD1cE6679",
+        "EthereumBridgeInContractAddress": "0x6BD06F033B5d1Bc9453B88b1cE6c63A907e7C13a",
+        "SwapId": "8bf46aa043f2977e84ba3542e980ac37c6d7b4cbd8b4f38c7ac2d1a80b70b1ee",
+        "MaximumLeafCount": 8,
+        "QueryToAddress": "2sFCkQs61YKVkHpN3AT7887CLfMvzzXnMkNYYM431RK5tbKQS9"
+      },
+      {
+        "chainId": "Sepolia",
+        "TargetChainId": "MainChain_AELF",
+        "OriginToken": "0x035900292c309d8beCBCAFb3227238bec0EBa253",
+        "EthereumBridgeInContractAddress": "0x6BD06F033B5d1Bc9453B88b1cE6c63A907e7C13a",
+        "SwapId": "a743b72e15a9807329a76bac45ea168b095c4db3fff8aa9cebe14ec78b1d5215",
+        "MaximumLeafCount": 8,
+        "QueryToAddress": "2sFCkQs61YKVkHpN3AT7887CLfMvzzXnMkNYYM431RK5tbKQS9"
+      },
+      {
+        "chainId": "Sepolia",
+        "TargetChainId": "SideChain_tDVV",
+        "OriginToken": "0x8adD57b8aD6C291BC3E3ffF89F767fcA08e0E7Ab",
+        "EthereumBridgeInContractAddress": "0x6BD06F033B5d1Bc9453B88b1cE6c63A907e7C13a",
+        "SwapId": "be90ad16d3d9fe8624776b498db290a8432bc729f536b8c2c63fe6ea82d33f3b",
+        "MaximumLeafCount": 8,
+        "QueryToAddress": "XmQ59e3JxmtP5gGafNFyJQAF5A2WbtVDYXFVv3JEaKMckyb3b"
+      },
+      {
+        "chainId": "Sepolia",
+        "TargetChainId": "SideChain_tDVV",
+        "OriginToken": "0x60eeCc4d19f65B9EaDe628F2711C543eD1cE6679",
+        "EthereumBridgeInContractAddress": "0x6BD06F033B5d1Bc9453B88b1cE6c63A907e7C13a",
+        "SwapId": "96db0faf2ee7afebe10c2916e4f4e5215c06bdcaa9822d9c059a84aa01119ea1",
+        "MaximumLeafCount": 8,
+        "QueryToAddress": "XmQ59e3JxmtP5gGafNFyJQAF5A2WbtVDYXFVv3JEaKMckyb3b"
+      },
+      {
+        "chainId": "Sepolia",
+        "TargetChainId": "SideChain_tDVV",
+        "OriginToken": "0x035900292c309d8beCBCAFb3227238bec0EBa253",
+        "EthereumBridgeInContractAddress": "0x6BD06F033B5d1Bc9453B88b1cE6c63A907e7C13a",
+        "SwapId": "ddc05eb8cd7d66e69069ac6234972ec1b80e7bc3630f13fd47e4f85f60c39f2f",
+        "MaximumLeafCount": 8,
+        "QueryToAddress": "XmQ59e3JxmtP5gGafNFyJQAF5A2WbtVDYXFVv3JEaKMckyb3b"
+      },
+      {
+        "chainId": "BSCTest",
+        "TargetChainId": "MainChain_AELF",
+        "OriginToken": "0xd1CD51a8d28ab58464839ba840E16950A6a635ad",
+        "EthereumBridgeInContractAddress": "0x802a044dAe0E8a49cb4a255D0dC5C677c35106B7",
+        "SwapId": "16f38c4778383c25816e87c7cfe26028cb625f811add7434e26da0c2b65ca9e3",
+        "MaximumLeafCount": 8,
+        "QueryToAddress": "2sFCkQs61YKVkHpN3AT7887CLfMvzzXnMkNYYM431RK5tbKQS9"
+      },
+      {
+        "chainId": "BSCTest",
+        "TargetChainId": "MainChain_AELF",
+        "OriginToken": "0x3F280eE5876CE8B15081947E0f189E336bb740A5",
+        "EthereumBridgeInContractAddress": "0x802a044dAe0E8a49cb4a255D0dC5C677c35106B7",
+        "SwapId": "21148b76cba3374b3ddca27b64973dec660b0030c46a24fd48cf13715729bf88",
+        "MaximumLeafCount": 8,
+        "QueryToAddress": "2sFCkQs61YKVkHpN3AT7887CLfMvzzXnMkNYYM431RK5tbKQS9"
+      },
+      {
+        "chainId": "BSCTest",
+        "TargetChainId": "MainChain_AELF",
+        "OriginToken": "0x0CBAb7E71f969Bfb3eF5b13542E9087a73244F02",
+        "EthereumBridgeInContractAddress": "0x802a044dAe0E8a49cb4a255D0dC5C677c35106B7",
+        "SwapId": "7a8e2c032fc1f0447488f4f5e0bd308541a4b6b83844fc027b37278431f2c4dd",
+        "MaximumLeafCount": 8,
+        "QueryToAddress": "2sFCkQs61YKVkHpN3AT7887CLfMvzzXnMkNYYM431RK5tbKQS9"
+      },
+      {
+        "chainId": "BSCTest",
+        "TargetChainId": "SideChain_tDVV",
+        "OriginToken": "0xd1CD51a8d28ab58464839ba840E16950A6a635ad",
+        "EthereumBridgeInContractAddress": "0x802a044dAe0E8a49cb4a255D0dC5C677c35106B7",
+        "SwapId": "ceeafbc5174cbd66c1bdda662ea06595ab57fa3c2cbf3728e38b4b5dde4ebb0c",
+        "MaximumLeafCount": 8,
+        "QueryToAddress": "XmQ59e3JxmtP5gGafNFyJQAF5A2WbtVDYXFVv3JEaKMckyb3b"
+      },
+      {
+        "chainId": "BSCTest",
+        "TargetChainId": "SideChain_tDVV",
+        "OriginToken": "0x3F280eE5876CE8B15081947E0f189E336bb740A5",
+        "EthereumBridgeInContractAddress": "0x802a044dAe0E8a49cb4a255D0dC5C677c35106B7",
+        "SwapId": "0d7485b65e557b6d61fd92cdf101c6a9750fdff832b7760431fefc164154cdd5",
+        "MaximumLeafCount": 8,
+        "QueryToAddress": "XmQ59e3JxmtP5gGafNFyJQAF5A2WbtVDYXFVv3JEaKMckyb3b"
+      },
+      {
+        "chainId": "BSCTest",
+        "TargetChainId": "SideChain_tDVV",
+        "OriginToken": "0x0CBAb7E71f969Bfb3eF5b13542E9087a73244F02",
+        "EthereumBridgeInContractAddress": "0x802a044dAe0E8a49cb4a255D0dC5C677c35106B7",
+        "SwapId": "129ff48999a1c73bad13e140c4f6a05681c688bb45f9f09602470b8c43d22eae",
+        "MaximumLeafCount": 8,
+        "QueryToAddress": "XmQ59e3JxmtP5gGafNFyJQAF5A2WbtVDYXFVv3JEaKMckyb3b"
+      },
+      {
+        "chainId": "Nile",
+        "TargetChainId": "MainChain_AELF",
+        "OriginToken": "TC9D6ghWXUcGPdhvJZPMVvmST5WkX6Rock",
+        "EthereumBridgeInContractAddress": "TAyJxS7ATKCp9iVzms1wPGg3iXV9p51SGe",
+        "SwapId": "b9617f87722762596eaef1d381bc5619a292f0ec187afb3bc65f0f60304b3f33",
+        "MaximumLeafCount": 8,
+        "QueryToAddress": "2sFCkQs61YKVkHpN3AT7887CLfMvzzXnMkNYYM431RK5tbKQS9"
+      },
+      {
+        "chainId": "Nile",
+        "TargetChainId": "SideChain_tDVV",
+        "OriginToken": "TC9D6ghWXUcGPdhvJZPMVvmST5WkX6Rock",
+        "EthereumBridgeInContractAddress": "TAyJxS7ATKCp9iVzms1wPGg3iXV9p51SGe",
+        "SwapId": "129ff48999a1c73bad13e140c4f6a05681c688bb45f9f09602470b8c43d22eae", //TODO
+        "MaximumLeafCount": 8,
+        "QueryToAddress": "XmQ59e3JxmtP5gGafNFyJQAF5A2WbtVDYXFVv3JEaKMckyb3b"
+      }
+    ],
+    "BridgesOut": [
+      {
+        "chainId": "MainChain_AELF",
+        "TargetChainId": "Sepolia",
+        "OriginToken": "ELF",
+        "QueryToAddress": "2sFCkQs61YKVkHpN3AT7887CLfMvzzXnMkNYYM431RK5tbKQS9",
+        "EthereumSwapId": "0x985437ac8419a449edb553436fabc4e38c4183aa5d5ab800bd92deb5dd5376f5",
+        "EthereumBridgeOutContractAddress": "0xc4749636D827107b2df539852648e6E9f19F4520"
+      },
+      {
+        "chainId": "MainChain_AELF",
+        "TargetChainId": "Sepolia",
+        "OriginToken": "USDT",
+        "QueryToAddress": "2sFCkQs61YKVkHpN3AT7887CLfMvzzXnMkNYYM431RK5tbKQS9",
+        "EthereumSwapId": "0x22fe31854ffa8a2fc76426d0f465c4c116f165561d944d15df5ae85eb5614d05",
+        "EthereumBridgeOutContractAddress": "0xc4749636D827107b2df539852648e6E9f19F4520"
+      },
+      {
+        "chainId": "MainChain_AELF",
+        "TargetChainId": "Sepolia",
+        "OriginToken": "ETH",
+        "QueryToAddress": "2sFCkQs61YKVkHpN3AT7887CLfMvzzXnMkNYYM431RK5tbKQS9",
+        "EthereumSwapId": "0xce093efd3b20d8e35ed17378dcef6a6377605171fea242afbd44258526995809",
+        "EthereumBridgeOutContractAddress": "0xc4749636D827107b2df539852648e6E9f19F4520"
+      },
+      {
+        "chainId": "SideChain_tDVV",
+        "TargetChainId": "Sepolia",
+        "OriginToken": "ELF",
+        "QueryToAddress": "XmQ59e3JxmtP5gGafNFyJQAF5A2WbtVDYXFVv3JEaKMckyb3b",
+        "EthereumSwapId": "0xcc80dca752eb9c740dc7a12381b02b754e95cf88a631618e5b507e9134468ad2",
+        "EthereumBridgeOutContractAddress": "0xc4749636D827107b2df539852648e6E9f19F4520"
+      },
+      {
+        "chainId": "SideChain_tDVV",
+        "TargetChainId": "Sepolia",
+        "OriginToken": "USDT",
+        "QueryToAddress": "XmQ59e3JxmtP5gGafNFyJQAF5A2WbtVDYXFVv3JEaKMckyb3b",
+        "EthereumSwapId": "0x5151cfdd52406f1e1657fbf40474c3c3e0287fc34be795769dedb4ec1494fc24",
+        "EthereumBridgeOutContractAddress": "0xc4749636D827107b2df539852648e6E9f19F4520"
+      },
+      {
+        "chainId": "SideChain_tDVV",
+        "TargetChainId": "Sepolia",
+        "OriginToken": "ETH",
+        "QueryToAddress": "XmQ59e3JxmtP5gGafNFyJQAF5A2WbtVDYXFVv3JEaKMckyb3b",
+        "EthereumSwapId": "0xe8f3ff78d11229e9552599aa2dfd7cf4115eeab9e7adb826fa67f64ef724fde3",
+        "EthereumBridgeOutContractAddress": "0xc4749636D827107b2df539852648e6E9f19F4520"
+      },
+      {
+        "chainId": "MainChain_AELF",
+        "TargetChainId": "BSCTest",
+        "OriginToken": "ELF",
+        "QueryToAddress": "2sFCkQs61YKVkHpN3AT7887CLfMvzzXnMkNYYM431RK5tbKQS9",
+        "EthereumSwapId": "0x22638a6e0af7d73400017fa0c7d75fc778f7ae5ab7ddd2980a3aa3e218b32ab2",
+        "EthereumBridgeOutContractAddress": "0x26965A367751411BcDC852D0f2004858f873A65F"
+      },
+      {
+        "chainId": "MainChain_AELF",
+        "TargetChainId": "BSCTest",
+        "OriginToken": "USDT",
+        "QueryToAddress": "2sFCkQs61YKVkHpN3AT7887CLfMvzzXnMkNYYM431RK5tbKQS9",
+        "EthereumSwapId": "0x66ed6f12b9d3106cc860b2d449ecec61618fd70da76a31eafca54158425a294a",
+        "EthereumBridgeOutContractAddress": "0x26965A367751411BcDC852D0f2004858f873A65F"
+      },
+      {
+        "chainId": "MainChain_AELF",
+        "TargetChainId": "BSCTest",
+        "OriginToken": "BNB",
+        "QueryToAddress": "2sFCkQs61YKVkHpN3AT7887CLfMvzzXnMkNYYM431RK5tbKQS9",
+        "EthereumSwapId": "0x7f681225be41f754aa910c5384c4e83787e4ded932a908b72f1f48d9bee7fade",
+        "EthereumBridgeOutContractAddress": "0x26965A367751411BcDC852D0f2004858f873A65F"
+      },
+      {
+        "chainId": "SideChain_tDVV",
+        "TargetChainId": "BSCTest",
+        "OriginToken": "ELF",
+        "QueryToAddress": "XmQ59e3JxmtP5gGafNFyJQAF5A2WbtVDYXFVv3JEaKMckyb3b",
+        "EthereumSwapId": "0xe99e14dd1bc1cd007cc0329e301ae694dec61d8238446a3806ba1aed9c15f1a7",
+        "EthereumBridgeOutContractAddress": "0xc4749636D827107b2df539852648e6E9f19F4520"
+      },
+      {
+        "chainId": "SideChain_tDVV",
+        "TargetChainId": "BSCTest",
+        "OriginToken": "USDT",
+        "QueryToAddress": "XmQ59e3JxmtP5gGafNFyJQAF5A2WbtVDYXFVv3JEaKMckyb3b",
+        "EthereumSwapId": "0x51149343106d808cc9a078c15d2b6c6f2c42fbc122b27b4524247f6d5bf8b07a",
+        "EthereumBridgeOutContractAddress": "0xc4749636D827107b2df539852648e6E9f19F4520"
+      },
+      {
+        "chainId": "SideChain_tDVV",
+        "TargetChainId": "BSCTest",
+        "OriginToken": "BNB",
+        "QueryToAddress": "XmQ59e3JxmtP5gGafNFyJQAF5A2WbtVDYXFVv3JEaKMckyb3b",
+        "EthereumSwapId": "0xaafdab4985c896588b29821a881e43e2d47fb4b881eddd87095bd9e4b4587406",
+        "EthereumBridgeOutContractAddress": "0xc4749636D827107b2df539852648e6E9f19F4520"
+      },
+      {
+        "chainId": "MainChain_AELF",
+        "TargetChainId": "Nile",
+        "OriginToken": "USDT",
+        "QueryToAddress": "2sFCkQs61YKVkHpN3AT7887CLfMvzzXnMkNYYM431RK5tbKQS9",
+        "EthereumSwapId": "1c4eb73aa5b4af354e326d585f25da13149b3e61fe8609cc5e0e12dbc123bd6f",
+        "EthereumBridgeOutContractAddress": "TQGdZkonWomNTxPskkUX3f19kB5W3yJeuS"
+      },
+      {
+        "chainId": "SideChain_tDVV",
+        "TargetChainId": "Nile",
+        "OriginToken": "USDT",
+        "QueryToAddress": "XmQ59e3JxmtP5gGafNFyJQAF5A2WbtVDYXFVv3JEaKMckyb3b",
+        "EthereumSwapId": "b1144461be65701294e4f44ef8150e8f3a713470c00ab3d17508a64ab6102690",
+        "EthereumBridgeOutContractAddress": "TQGdZkonWomNTxPskkUX3f19kB5W3yJeuS"
+      }
+    ]
+  },
+  "BlockConfirmation": {
+    "ConfirmationCount": {
+      "Ethereum": 12,
+      "BSCTest": 30,
+      "Sepolia":12,
+      "Nile": 12
+    }
+  },
+  "ChainIdMapping": {
+    "Mapping": {
+      "AELF": "MainChain_AELF",
+      "tDVV": "SideChain_tDVV"
+    }
+  },
+  "IndexerSync": {
+      "StartSyncHeight": {
+        "AELF": 35813390,
+        "tDVV": 35385708
+      }
+    },
+  "FaultHandling": {
+    "IsReSendFailedJob":false
+  },
+  "RetryTransmitInfo": {
+    "RetryCheckLib" : 30,
+    "RetryTransmitTimePeriod" : 1,
+    "MaxSendTransmitTimes" : 3,
+    "MaxQueryTransmitTimes" : 10,
+    "RetryTransmitCheckTimePeriod" : 1,
+    "DelayTransmitTimePeriod" : 30
+  },
+  "GraphQL": {
+    "Configuration": "http://192.168.67.233:7010/AElfIndexer_Oracle/OracleIndexerSchema/graphql"
+  },
+  "ExpiredTime": {
+    "ReceiptIndexExpiredTime" : 600
+  },
+  "AbpRabbitMqBackgroundJob": {
+    "DefaultQueueNamePrefix": "oracle_client_01_transmit_jobs.",
+    "DefaultDelayedQueueNamePrefix":"oracle_client_01_transmit_jobs.delayed"
+  }
+}

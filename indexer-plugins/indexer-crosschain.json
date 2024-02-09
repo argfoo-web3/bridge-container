@@ -1,0 +1,112 @@
+{
+  "App": {
+    "CorsOrigins": "https://*.AElfScan.com,http://localhost:4200"
+  },
+  "ConnectionStrings": {
+    "Default": "mongodb://admin:admin123456@127.0.0.1:27017/AElfIndexer?authSource=admin"
+  },
+  "Kestrel": {
+    "EndPoints": {
+      "Http": {
+        "Url": "http://*:7020/"
+      }
+    }
+  },
+  "Node": {
+    "NodeConfigList": [
+      {
+        "ChainId": "AELF",
+        "Endpoint": "http://192.168.66.3:8000"
+      },
+      {
+        "ChainId": "tDVV",
+        "Endpoint": "http://192.168.66.241:8000"
+      }
+    ]
+  },
+  "ElasticUris": {
+    "Uris": [
+      "http://192.168.66.191:9200",
+      "http://192.168.67.208:9200",
+      "http://192.168.66.97:9200"
+    ]
+  },
+  "Kafka" : {
+    "Brokers":[
+      "192.168.67.64:9002"
+    ],
+    "MessageMaxBytes": 104857600
+  },
+  "IndexSetting": {
+    "NumberOfShards": 5,
+    "NumberOfReplicas": 1,
+    "IndexPrefix": "CrossChainIndexer"
+  },
+  "Orleans": {
+    "ClusterId": "dev",
+    "ServiceId": "OrleansBasics",
+    "MongoDBClient": "mongodb://admin:admin123456@192.168.67.176:27017/?maxPoolSize=555",
+    "DataBase": "AElfIndexerOrleansDB"
+  },
+  "PlugIns": {
+    "Path" : "/app/plugins"
+  },
+  "DappMessageQueue": {
+    "RetryTimes": 10,
+    "RetryInterval": 20000
+  },
+  "RabbitMQ": {
+    "Connections": {
+      "Default": {
+        "HostName": "192.168.66.147",
+        "Port": "5672",
+        "UserName": "admin",
+        "Password": "admin123456"
+      }
+    },
+    "EventBus": {
+      "ClientName": "AElfIndexer_CrossChain-SubscribeClient-c5d2e9adcef549b5bd2ca21eda204322",
+      "ExchangeName": "AElfIndexer_CrossChain-c5d2e9adcef549b5bd2ca21eda204322",
+      "PrefetchCount": 20
+    }
+  },
+  "ContractInfo": {
+    "ContractInfos": {
+      "AELF":
+      {
+        "BridgeContractAddress": "iupiTuL2cshxB9UNauXNXe9iyCcqka7jCotodcEHGpNXeLzqG",
+        "OracleContractAddress": "2TXvtjgTiMwjvEyWGEvfbeQ9P6zVK55pTPcmzvLFBDCMLNUYXV",
+        "ReportContractAddress": "2RvZEzZTrj5BXEuMtHmfVDn2fLwKdBYD7CT5LxBCccqwGN7akY",
+        "CrossChainContractAddress": "2SQ9LeGZYSWmfJcYuQkDQxgd3HzwjamAaaL4Tge2eFSXw2cseq",
+        "TokenContractAddress": "JRmBduh4nXWi1aXgdUsj5gJrzeZb2LxmrAbf7W99faZSvoAaE"
+      },
+      "tDVV":
+      {
+        "BridgeContractAddress": "bXRnskXaJUPcz4uVmX29Fht87tQbGst7uixFGC7SniwVm7Uf9",
+        "OracleContractAddress": "SBrGAmBong8tmou3EKHgKkUoqpvEUrPNuBtpF9yc3QA1r9SKL",
+        "ReportContractAddress": "EhoPemr3rb2nz2X365F58pWk8tybw6vALdd8zwjdhzKYMfyKr",
+        "CrossChainContractAddress": "2snHc8AMh9QMbCAa7XXmdZZVM5EBZUUPDdLjemwUJkBnL6k8z9",
+        "TokenContractAddress": "7RzVGiuVWkvL4VfVHdZfQF2Tri3sgLe9U991bohHFfSRZXuGX"
+      }
+    }
+  },
+  "Serilog": {
+    "MinimumLevel": {
+      "Default": "Debug",
+      "Override": {
+        "Default": "Warning",
+        "System": "Warning",
+        "Microsoft": "Warning"
+      }
+    },
+    "WriteTo": [
+      {
+        "Name": "RollingFile",
+        "Args": {
+          "pathFormat": "Logs/log-{Date}.log",
+          "retainedFileCountLimit": 15
+        }
+      }
+    ]
+  }
+}

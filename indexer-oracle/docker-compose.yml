@@ -1,0 +1,18 @@
+version: "3.9"
+
+name: indexer-oracle
+services:
+  mongodb:
+    image: mongo
+  ebridge-indexer-oracle:
+    build:
+      dockerfile: ../IndexerDockerfile
+      args: &default-args
+        branch: "${BRANCH}"
+        repo: "${REPO}"
+        servicename: Oracle.Indexer
+    restart: on-failure:5
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - ./indexer-oracle.json:/App/appsettings.json:rw
+    network_mode: service:redis

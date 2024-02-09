@@ -1,0 +1,51 @@
+version: "3.9"
+
+name: indexer-crosschain
+services:
+  mongodb:
+    image: mongo
+  ebridge-indexer-crosschain:
+    build:
+      dockerfile: ../IndexerDockerfile
+      args:
+        branch: "${CROSSCHAIN_BRANCH}"
+        repo: "${CROSSCHAIN_REPO}"
+        indexerConfig: "${CROSSCHAIN_MODULE_CONFIG}"
+        indexerClientId: "${CROSSCHAIN_INDEXER_CLIENTID}"
+        indexerClientVersion: "${CROSSCHAIN_INDEXER_VERSION}"
+        folder: "${CROSSCHAIN_WORK_FOLDER}"
+        servicename: CrossChainServer.Indexer
+    restart: on-failure:1
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - ./indexer-crosschain.json:/App/appsettings.json:rw
+  ebridge-indexer-server:
+    build:
+      dockerfile: ../IndexerDockerfile
+      args:
+        branch: "${SERVER_BRANCH}"
+        repo: "${SERVER_REPO}"
+        indexerConfig: "${SERVER_MODULE_CONFIG}"
+        indexerClientId: "${SERVER_INDEXER_CLIENTID}"
+        indexerClientVersion: "${SERVER_INDEXER_VERSION}"
+        folder: "${SERVER_WORK_FOLDER}"
+        servicename: Ebridge.Indexer.Plugin
+    restart: on-failure:1
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - ./indexer-server.json:/App/appsettings.json:rw
+  ebridge-indexer-oracle:
+    build:
+      dockerfile: ../IndexerDockerfile
+      args:
+        branch: "${ORACLE_BRANCH}"
+        repo: "${ORACLE_REPO}"
+        indexerConfig: "${ORACLE_MODULE_CONFIG}"
+        indexerClientId: "${ORACLE_INDEXER_CLIENTID}"
+        indexerClientVersion: "${ORACLE_INDEXER_VERSION}"
+        folder: "${ORACLE_WORK_FOLDER}"
+        servicename: Oracle.Indexer
+    restart: on-failure:1
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - ./indexer-oracle.json:/App/appsettings.json:rw

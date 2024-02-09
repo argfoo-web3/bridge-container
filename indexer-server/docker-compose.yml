@@ -1,0 +1,18 @@
+version: "3.9"
+
+name: indexer-server
+services:
+  mongodb:
+    image: mongo
+  ebridge-indexer-server:
+    build:
+      dockerfile: ../IndexerDockerfile
+      args: &default-args
+        branch: "${BRANCH}"
+        repo: "${REPO}"
+        servicename: Ebridge.Indexer.Plugin
+    restart: on-failure:5
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - ./indexer-server.json:/App/appsettings.json:rw
+    network_mode: service:redis

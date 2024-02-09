@@ -1,0 +1,25 @@
+FROM mcr.microsoft.com/dotnet/sdk:7.0 AS fetch-env
+WORKDIR /App
+ARG branch=dev
+ARG repo=https://github.com/eBridgeCrosschain/ebridge-server.git
+ARG indexerConfig=CrossChainServerIndexerModule.cs
+ARG indexerClientId=AElfIndexer_CrossChain_SG
+ARG indexerClientVersion=34083dd7b21b4c5696b2233e1be23b0b
+ARG folder=source
+RUN git clone $repo $folder
+WORKDIR /App/$folder
+RUN git checkout $branch
+RUN dotnet restore -s https://api.nuget.org/v3/index.json -s https://www.myget.org/F/aelf-project-dev/api/v3/index.json
+FROM fetch-env AS build-env
+ARG servicename
+RUN cd src/$servicename/
+RUN sed -E -i 's/protected override string ClientId => "[^"]*";/protected override string ClientId => "$indexerClientId";/g' $indexerConfig
+RUN sed -E -i 's/protected override string Version => "[0-9a-f]*";/protected override string Version => "$indexerClientVersion";/g' $indexerConfig
+RUN dotnet build -c Release
+FROM mcr.microsoft.com/dotnet/aspnet:7.0
+
+WORKDIR /App
+COPY --from=build-env /output .
+ARG servicename
+ENV RUNCMD="dotnet src/$servicename/bin/Release/net7.0/$servicename.dll"
+CMD $RUNCMD

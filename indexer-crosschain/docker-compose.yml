@@ -1,0 +1,18 @@
+version: "3.9"
+
+name: indexer-crosschain
+services:
+  mongodb:
+    image: mongo
+  ebridge-indexer-crosschain:
+    build:
+      dockerfile: ../IndexerDockerfile
+      args: &default-args
+        branch: "${BRANCH}"
+        repo: "${REPO}"
+        servicename: CrossChainServer.Indexer
+    restart: on-failure:5
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - ./indexer-crosschain.json:/App/appsettings.json:rw
+    network_mode: service:redis

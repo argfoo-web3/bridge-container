@@ -1,0 +1,62 @@
+version: "3.9"
+
+name: ebridge-server
+services:
+  redis:
+    image: redis
+    ports:
+      - 6379:6379
+  mysql:
+    image: mysql
+    ports: 
+      - 3306:3306
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root123456
+  elasticsearch:
+    image: elasticsearch:7.15.0
+    network_mode: service:redis
+    volumes:
+      - ./elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
+  rabbitmq:
+    environment:
+      - RABBITMQ_DEFAULT_USER=admin
+      - RABBITMQ_DEFAULT_PASS=admin123456
+      - RABBITMQ_DEFAULT_VHOST=/
+    image: rabbitmq:management
+    network_mode: service:redis
+  ebridge-server-dbmigrator:
+    build:
+      dockerfile: ../Dockerfile
+      args: &default-args
+        branch: "${BRANCH}"
+        repo: "${REPO}"
+        servicename: AElf.CrossChainServer.DbMigrator
+    restart: on-failure
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - ./dbmigrator.json:/App/appsettings.json:rw
+    network_mode: service:redis
+  ebridge-server-entityhandler:
+    build:
+      dockerfile: ../Dockerfile
+      args:
+        <<: *default-args
+        servicename: AElf.CrossChainServer.EntityHandler
+    restart: on-failure:5
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - ./entityhandler.json:/App/appsettings.json:rw
+    network_mode: service:redis
+  ebridge-server-httpapi.host:
+    build:
+      dockerfile: ../Dockerfile
+      args:
+        <<: *default-args
+        servicename: AElf.CrossChainServer.HttpApi.Host
+    restart: on-failure:5
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - ./httpapi.host.json:/App/appsettings.json:rw
+    network_mode: service:redis
